@@ -23,9 +23,7 @@ npm run build
 
 ## Contactos configurados
 
-- Presupuestos: ascensoresserma@gmail.com
-- Guardia: 11 3287-8426
-- WhatsApp Guardia: +54 9 11 3287-8426
+
 
 ## Logos de clientes
 
