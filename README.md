@@ -1,5 +1,4 @@
-# Ascensores SERMA — experiencia cinematográfica
-
+# Ascensores SERMA — 
 Proyecto Next.js preparado para Vercel.
 
 ## Ejecutar
