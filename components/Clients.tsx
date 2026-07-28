@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 
 const clients = [
@@ -21,8 +20,9 @@ const clients = [
   {
     name: "Epsilon",
     img: "/logos/logoepsilon_1-2.png",
-  },{
-    name: "Plasticos Sarratea",
+  },
+  {
+    name: "Plásticos Sarratea",
     img: "/logos/sarratea.png",
   },
   {
@@ -35,13 +35,17 @@ function ClientGroup({ hidden = false }: { hidden?: boolean }) {
   return (
     <div className="client-group" aria-hidden={hidden}>
       {clients.map((client) => (
-        <div className="client-logo" key={`${client.name}-${hidden}`}>
+        <div
+          className="client-logo"
+          key={`${client.name}-${hidden ? "copy" : "original"}`}
+        >
           <Image
             src={client.img}
             alt={hidden ? "" : `Logo de ${client.name}`}
             width={190}
             height={75}
             className="client-logo-image"
+            sizes="190px"
           />
         </div>
       ))}
@@ -51,13 +55,25 @@ function ClientGroup({ hidden = false }: { hidden?: boolean }) {
 
 export function Clients() {
   return (
-    <section id="clientes" className="clients">
+    <section
+      id="clientes"
+      className="clients"
+      aria-labelledby="clients-title"
+    >
       <div className="container">
-        <span className="clients-label">
-          EMPRESAS Y CONSORCIOS QUE CONFÍAN EN SERMA
-        </span>
+        <h2 id="clients-title" className="clients-label">
+          Empresas y organizaciones que confían en Ascensores SERMA
+        </h2>
 
-        <div className="client-window">
+        <p className="clients-description">
+          Brindamos mantenimiento y asistencia técnica a edificios, consorcios,
+          comercios e industrias de CABA y Gran Buenos Aires.
+        </p>
+
+        <div
+          className="client-window"
+          aria-label="Algunos clientes de Ascensores SERMA"
+        >
           <div className="client-track">
             <ClientGroup />
             <ClientGroup hidden />
