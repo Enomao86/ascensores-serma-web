@@ -27,7 +27,7 @@ export function ContactForm() {
     setStatus("sending");
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         body: formData,
       });
@@ -35,7 +35,9 @@ export function ContactForm() {
       const result = await response.json();
 
       if (!response.ok || !result.success) {
-        throw new Error(result.message || "No se pudo enviar el formulario.");
+        throw new Error(
+          result.message || "No se pudo enviar el formulario."
+        );
       }
 
       form.reset();
@@ -50,12 +52,6 @@ export function ContactForm() {
     <form className="serma-form" onSubmit={handleSubmit}>
       <input
         type="hidden"
-        name="access_key"
-        value={process.env.NEXT_PUBLIC_WEB3FORMS_KEY}
-      />
-
-      <input
-        type="hidden"
         name="subject"
         value="Nueva consulta desde la web de Ascensores SERMA"
       />
@@ -66,7 +62,7 @@ export function ContactForm() {
         value="Sitio web Ascensores SERMA"
       />
 
-      {/* Campo antispam: debe permanecer oculto */}
+      {/* Campo antispam */}
       <input
         type="checkbox"
         name="botcheck"
@@ -78,9 +74,7 @@ export function ContactForm() {
       <div className="form-heading">
         <span className="eyebrow">SOLICITAR PRESUPUESTO</span>
         <h3>Contanos qué servicio necesitás.</h3>
-        <p>
-          Completá los datos y nuestro equipo se comunicará con vos.
-        </p>
+        <p>Completá los datos y nuestro equipo se comunicará con vos.</p>
       </div>
 
       <div className="form-grid">
@@ -215,8 +209,7 @@ export function ContactForm() {
       {status === "success" && (
         <div className="form-message form-message-success" role="status">
           <CheckCircle2 />
-          Tu consulta fue enviada correctamente. Nos comunicaremos a la
-          brevedad.
+          Tu consulta fue enviada correctamente. Nos comunicaremos a la brevedad.
         </div>
       )}
 
